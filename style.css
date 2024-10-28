@@ -1,0 +1,125 @@
+* {
+  transition: 0.3s !important;
+}
+
+.col-sm-4 {
+  text-align: center;
+  line-height: 1;
+}
+
+p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+}
+
+.title {
+  font-weight: 700;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  font-family: Alexandria;
+  text-align: center;
+  width: 100%;
+}
+body {
+  background-color: #f3f4f6;
+}
+h1 {
+  text-align: center;
+  font-size: 96px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  letter-spacing: -2px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+button {
+  transition: 0.3s !important;
+}
+
+button:focus {
+  border: none !important;
+}
+
+.wiki-btn a:hover {
+  color: #fff !important;
+}
+
+.form-inline input {
+  margin-right: 10px;
+  flex: 1;
+}
+.form-inline .remove-edge-btn {
+  background-color: transparent;
+  border: none;
+  color: #dc3545;
+  font-size: 24px;
+}
+.btn-custom {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.btn-custom-back {
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
+}
+.btn-custom-back:hover {
+  background-color: #e2e2e2;
+}
+
+.btn-custom-back a {
+  color: #000 !important;
+}
+
+.form-row div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+label {
+  width: fit-content !important;
+}
+
+small {
+  text-align: left;
+  margin-top: 2px;
+}
+
+::placeholder {
+  font-size: 14px !important;
+  color: #b8b8b8 !important;
+  font-weight: 500 !important;
+}
+
+input {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+.generate-section {
+  margin-top: 10px !important;
+}
+
+.form-title {
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.add-more{
+  margin-top: 20px;
+}
+
+hr {
+  width: 50%;
+}

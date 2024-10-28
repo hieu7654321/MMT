@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+    <title>Dijkstra Simulator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/usm/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="MMT.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const result = JSON.parse(localStorage.getItem('dijkstraResult'));
+
+            if (result) {
+                const { distances, previous, start, end, graph } = result;
+
+                // Check if end is explicitly defined (not empty string)
+                if (end !== "" && distances.hasOwnProperty(end) && distances[end] !== Infinity) {
+                    // Show single path case
+                    document.getElementById('kq').innerHTML = `
+                        <div class="form">
+                            <div class="row">
+                                <div class="col-sm-3"><label>From</label></div>
+                                <div class="col-sm-3"><label>To</label></div>
+                                <div class="col-sm-3"><label>Weight</label></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-sm-3"><input type="text" class="form-control" value="${start}" disabled></div>
+                                <div class="col-sm-3"><input type="text" class="form-control" value="${end}" disabled></div>
+                                <div class="col-sm-3"><input type="text" class="form-control" value="${distances[end]}" disabled></div>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-dark" id="see-details" onclick="toggleDetails(true)" style="display: none;">See Detail</button>
+                                    <button type="button" class="btn btn-dark" id="less-details" onclick="toggleDetails(false)">Less Detail</button>
+                                </div>
+                            </div>
+                        </div>`;
+                    showDetails(graph, distances, previous, start, end);
+                } else {
+                    // Show all paths case
+                    let kq = `Paths and their weights:`;
+                    const nodes = Object.keys(distances).filter(node => node !== start);
+                    nodes.unshift(start);
+
+                    nodes.forEach(node => {
+                        const path = tracePath(previous, start, node);
+                        kq += `
+                            <div class="form">
+                                <div class="row">
+                                    <div class="col-sm-3"><label>From</label></div>
+                                    <div class="col-sm-3"><label>To</label></div>
+                                    <div class="col-sm-3"><label>Weight</label></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-sm-3"><input type="text" class="form-control" value="${start}" disabled></div>
+                                    <div class="col-sm-3"><input type="text" class="form-control" value="${node}" disabled></div>
+                                    <div class="col-sm-3"><input type="text" class="form-control" value="${distances[node]}" disabled></div>
+                                </div>
+                            </div>`;
+                    });
+
+                    document.getElementById('kq').innerHTML = kq;
+                }
+            }
+        });
+    </script>
+    
+<body>
+
+    <div class="container pt-5">
+        <h1>DIJKSTRA SIMULAT<i class="ri-search-eye-line"></i>R</h1>
+
+        <!-- Watch your results being generated -->
+        <div class="form-title">Watch your results being generated.</div>
+        <form>
+        
+            <!-- Then, enter edges of your graph -->
+
+            <div id="kq" class="pt-3"></div>
+            <hr>
+            <div class="details" id="details"></div>
+            <br>
+        
+            <!-- Buttons -->
+            <div class="form-row">
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-dark " onclick="localStorage.removeItem('dijkstraResult')"><a href="./next.html" style="text-decoration: none;color: white;">New form</a></button>
+                </div>
+                <div class="col-sm-8"></div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-custom-back"><a href="./next.html">Back</a></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

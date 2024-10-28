@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+    <title>Dijkstra Simulator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/usm/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="MMT.js"></script>
+
+<body>
+
+    <div class="container pt-5">
+        <h1>DIJKSTRA SIMULAT<i class="ri-search-eye-line"></i>R</h1>
+
+        <!-- Watch your results being generated -->
+        <div class="form-title">Watch your results being generated.</div>
+        <form method="">
+            <div class="form-row">
+                <div class=" col-sm-4">
+                    <label for="numNodes">Number Of Nodes</label>
+                    <input type="number" class="form-control" id="numNodes" min="1" placeholder="0" oninput="createInputs()" required>
+                </div>
+                <div class=" col-sm-4">
+                    <label for="startNode">Start Node</label>
+                    <input type="text" class="form-control" id="startNode" maxlength="1" placeholder="A" required>
+                </div>
+                <div class=" col-sm-4">
+                    <label for="endNode">End Node (Optional)</label>
+                    <input type="text" class="form-control" id="endNode" maxlength="1" placeholder="B">
+                    <small>If you want to find the shortest path between 2 nodes.</small>
+                </div>
+            </div>
+
+            <!-- Then, enter paths of your graph -->
+            <div class="form-title">Then, enter paths of your graph.</div>
+            <div id="graph-edges">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>From</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>To</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Weight</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control start-node" maxlength="1" placeholder="A" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control end-node" maxlength="1" placeholder="B" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="number" class="form-control weight" placeholder="0" required>
+                    </div>
+                    <button title="Remove" type="button" class="btn" onclick="removeRow(this)"><i class="ri-delete-bin-line"></i></button>
+                </div>
+            </div>
+            <!-- Add more edges -->
+            <div class="add-more">
+                <button type="button" class="btn btn-secondary btn-small" onclick="addInputs()">+</button>
+            </div>
+
+            <div class="form-title">Finally, watch your results being generated.</div>
+        
+            <!-- Buttons -->
+            <div class="form-row generate-section">
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-dark " onclick="generate()">Generate</button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="reset" class="btn btn-outline-dark ">Reset Form</button>
+                </div>
+                <div class="col-sm-6"></div>
+                <div class="col-sm-2">
+                    <a href="./index.html">
+                        <button type="button" class="btn btn-custom-back">Back</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
