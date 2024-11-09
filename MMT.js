@@ -30,25 +30,17 @@ function addInputs() {
   container.appendChild(row);
 }
 
-// Hàm để tự động thêm hàng dựa trên số lượng nút
+// Hàm để tự động thêm hàng dựa trên số lượng dòng
 function createInputs() {
   const nodes = parseInt(document.getElementById("numNodes").value, 10);
   const graph = document.getElementById("graph-edges");
   graph.innerHTML = "";
 
-  // Tính tổng số đường đi có thể có
-  const totalPaths = (nodes * (nodes - 1)) / 2;
 
   // Tạo hàng nhập liệu cho mỗi đường đi có thể có
-  for (let i = 0; i < totalPaths; i++) {
+  for (let i = 0; i < nodes; i++) {
     addInputs();
   }
-
-  // Hiển thị tổng số đường đi
-  const pathsInfo = document.createElement("div");
-  pathsInfo.className = "form-text text-muted";
-  pathsInfo.textContent = `Tổng số đường đi có thể có: ${totalPaths}`;
-  graph.appendChild(pathsInfo);
 }
 
 // Hàm để xóa một hàng
